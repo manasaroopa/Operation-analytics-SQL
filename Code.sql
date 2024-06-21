@@ -7,20 +7,29 @@ group by ds;
 
 
 
-SELECT 
+SELECT ds as date, count(ds)/sum(time_spent)
+from job_data
+group by ds;
+
+select
 COUNT(event) / SUM(time_spent)
 FROM
 job_data;
 
-SELECT 
-    language,
-    COUNT(language) * 100 / (SELECT 
-            COUNT(*)
-        FROM
-            job_data)
-FROM
-    job_data
+
+
+SELECT language,
+COUNT(language) * 100 / (SELECT COUNT(*) FROM job_data)
+FROM job_data
 GROUP BY language;
+
+
+SELECT actor_id, 
+count(actor_id) as duplicate rows
+from job data
+group by actor_id
+having count(actor_id) > 1
+
 
 
 
